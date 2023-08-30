@@ -92,7 +92,7 @@ export default {
                                     <li :class="currentPage === 1 ? 'disabled' : ''">
                                         <button class="page-link" @click="getPosts(currentPage - 1 )">Precedente</button>
                                     </li>
-                                    <li :class="currentPage === lastPage ? 'disabled' : ''">
+                                    <li :class="currentPage === lastPage ?'disabled' : ''">
                                         <button class="page-link" @click="getPosts(currentPage + 1)">Successivo</button>
                                         
                                     </li>
