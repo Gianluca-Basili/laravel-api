@@ -4,7 +4,7 @@ export default {
     name: 'AppMain',
     data(){
       return{
-            baseUrl: 'http://localhost:8000',
+            baseUrl:'http://localhost:8000',
             posts: [],
             loading: true
       }
