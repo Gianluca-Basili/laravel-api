@@ -11,26 +11,26 @@ export default {
             baseUrl:'http://localhost:8000',
             posts: [],
             loading: true,
-            maxNumCharacters: 250
+            maxNumCharacters: 250,
+            currentPage: 1,
+            lastPage: null
       }
     },
     created(){
-        this.getPosts();
+        this.getPosts(1);
     },
     methods:{
-        getPosts(){
+        getPosts(num_page){
             this.loading = true;
-            axios.get( `${this.baseUrl}/api/posts`).then((response)=>{
+           
+
+            axios.get(`${this.baseUrl}/api/posts`, {params: {page: num_page}}).then((response) =>{
+                this.posts = response.data.results.data;
+                this.currentPage = response.data.results.current_page;
+                this.lastPage = response.data.results.last_page;
+
+                this.loading = false;
                 
-                if(response.data.success){
-                    this.posts = response.data.results;
-                    this.loading = false;
-
-                }
-
-                else{
-
-                }
             })
         },
 
@@ -69,8 +69,8 @@ export default {
                         </div>
                         <div class="card-body">
                             <p>
-                                <span v-if="post.category">{{post.category.name}}</span>
-                                <span v-else>Categoria non assegnata</span>
+                                <span v-if="post.category"><strong><em>{{post.category.name}}</em></strong></span>
+                                <span v-else><strong><em>Categoria non assegnata</em></strong></span>
                             </p>
                             <p v-if="post.tags">
                                 <span class="badge text-bg-primary me-3" v-for="tag in post.tags" :key="tag.id">{{tag.name}}</span>
@@ -80,6 +80,26 @@ export default {
                         <div class="card-footer">
                             <a href="#" class="btn btn-sm btn-primary">Leggi l'articolo</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <nav>
+                            <ul>
+                                <div class="pagination">
+                                    <li :class="currentPage === 1 ? 'disabled' : ''">
+                                        <button class="page-link" @click="getPosts(currentPage - 1 )">Precedente</button>
+                                    </li>
+                                    <li :class="currentPage === lastPage ? 'disabled' : ''">
+                                        <button class="page-link" @click="getPosts(currentPage + 1)">Successivo</button>
+                                        
+                                    </li>
+
+                                </div>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
