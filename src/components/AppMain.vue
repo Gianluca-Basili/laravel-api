@@ -1,7 +1,11 @@
 <script>
+import AppLoader from './AppLoader.vue';
 import axios from 'axios';
 export default {
     name: 'AppMain',
+    components:{
+        AppLoader
+    },
     data(){
       return{
             baseUrl:'http://localhost:8000',
@@ -37,6 +41,14 @@ export default {
             <div class="row">
                 <div class="col-12">
                     <h1 class="text-center">Boolpress</h1>
+                </div>
+            </div>
+        </div>
+        <AppLoader v-if="loading" />
+        <div v-else class="container">
+            <div class="row">
+                <div class="col-12" v-for="post in posts" :key="post.id">
+                        {{post.title}}
                 </div>
             </div>
         </div>
