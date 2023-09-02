@@ -1,17 +1,20 @@
 <script>
-import AppLoader from '../components/AppLoader.vue';
 import axios from 'axios';
+import { store }  from '../store.js';
+import AppLoader from '../components/AppLoader.vue';
+import PostCard from '../components/PostCard.vue';
 export default {
     name: 'PostList',
     components:{
-        AppLoader
+        AppLoader,
+        PostCard
     },
     data(){
       return{
-            baseUrl:'http://localhost:8000',
+            store,
             posts: [],
             loading: true,
-            maxNumCharacters: 250,
+            
             currentPage: 1,
             lastPage: null
       }
@@ -24,7 +27,7 @@ export default {
             this.loading = true;
            
 
-            axios.get(`${this.baseUrl}/api/posts`, {params: {page: num_page}}).then((response) =>{
+            axios.get(`${store.baseUrl}/api/posts`, {params: {page: num_page}}).then((response) =>{
                 this.posts = response.data.results.data;
                 this.currentPage = response.data.results.current_page;
                 this.lastPage = response.data.results.last_page;
@@ -59,6 +62,7 @@ export default {
         <div v-else class="container">
             <div class="row">
                 <div class="col-12 col-md-4 mt-5" v-for="post in posts" :key="post.id">
+                    <PostCard :post="post" />
                     <div class="card min-height-200">
                         <div class="card-header">
                             {{post.title}}
