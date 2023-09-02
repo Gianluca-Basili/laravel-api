@@ -13,7 +13,7 @@ export default {
       return{
             store,
             posts: [],
-            loading: true,
+           
             
             currentPage: 1,
             lastPage: null
@@ -24,7 +24,7 @@ export default {
     },
     methods:{
         getPosts(num_page){
-            this.loading = true;
+            this.store.loading = true;
            
 
             axios.get(`${store.baseUrl}/api/posts`, {params: {page: num_page}}).then((response) =>{
@@ -32,7 +32,7 @@ export default {
                 this.currentPage = response.data.results.current_page;
                 this.lastPage = response.data.results.last_page;
 
-                this.loading = false;
+                this.store.loading = false;
                 
             })
         },
@@ -58,7 +58,7 @@ export default {
                 </div>
             </div>
         </div>
-        <AppLoader v-if="loading" />
+        <AppLoader v-if="store.loading" />
         <div v-else class="container">
             <div class="row">
                 <div class="col-12 col-md-4 mt-5" v-for="post in posts" :key="post.id">

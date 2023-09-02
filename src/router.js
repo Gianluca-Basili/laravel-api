@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Homepage from './pages/Homepage.vue';
 import PostList from './pages/PostList.vue';
+import CategoriesList from './pages/CategoriesList.vue';
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -15,6 +17,11 @@ const router = createRouter({
             path:'/posts',
             name:'posts',
             component: PostList
+        },
+        {
+            path:'/categories',
+            name:'categories',
+            component: CategoriesList
         },
         
     ]
