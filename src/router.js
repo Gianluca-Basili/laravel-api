@@ -6,6 +6,9 @@ import SinglePost from './pages/SinglePost.vue'
 import CategoriesList from './pages/CategoriesList.vue';
 import AboutUs from './pages/AboutUs.vue';
 import ContactUs from './pages/ContactUs.vue';
+import NotFound from './pages/NotFound.vue';
+
+
 
 
 
@@ -41,6 +44,11 @@ const router = createRouter({
             path:'/ContactUs',
             name:'ContactUs',
             component: ContactUs
+        },
+        {
+            path:'/*',
+            name:'Not-Found',
+            component: NotFound
         },
         
     ]
