@@ -46,9 +46,14 @@ const router = createRouter({
             component: ContactUs
         },
         {
-            path:'/*',
+            path:'/pagina-non-trovata',
             name:'Not-Found',
             component: NotFound
+        },
+        {
+            path:'/catchAll(.*)',
+            redirect:'Not-Found'
+            
         },
         
     ]
