@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Homepage from './pages/Homepage.vue';
 import PostList from './pages/PostList.vue';
+import SinglePost from './pages/SinglePost.vue'
 import CategoriesList from './pages/CategoriesList.vue';
 import AboutUs from './pages/AboutUs.vue';
 import ContactUs from './pages/ContactUs.vue';
@@ -17,9 +18,14 @@ const router = createRouter({
             component: Homepage
         },
         {
-            path:'/posts',
+            path:'/blog',
             name:'posts',
             component: PostList
+        },
+        {
+            path:'/blog/:slug',
+            name:'single-post',
+            component: SinglePost
         },
         {
             path:'/categories',

@@ -44,7 +44,7 @@ export default {
             <p>{{truncateText(post.content)}}</p>
         </div>
         <div class="card-footer">
-            <a href="#" class="btn btn-sm btn-primary">Leggi l'articolo</a>
+            <router-link class="btn btn-sm btn-primary" :to="{name: 'single-post', params: {slug: post.slug}}">Leggi l'articolo</router-link>
         </div>
     </div>
     
