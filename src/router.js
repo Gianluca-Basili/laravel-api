@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import Homepage from './pages/Homepage.vue';
 import PostList from './pages/PostList.vue';
 import CategoriesList from './pages/CategoriesList.vue';
+import AboutUs from './pages/AboutUs.vue';
+import ContactUs from './pages/ContactUs.vue';
+
 
 
 const router = createRouter({
@@ -22,6 +25,16 @@ const router = createRouter({
             path:'/categories',
             name:'categories',
             component: CategoriesList
+        },
+        {
+            path:'/AboutUs',
+            name:'AboutUs',
+            component: AboutUs
+        },
+        {
+            path:'/ContactUs',
+            name:'ContactUs',
+            component: ContactUs
         },
         
     ]

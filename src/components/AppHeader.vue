@@ -10,6 +10,7 @@ export default {
                     },
                     {
                         label:"Chi siamo",
+                        routeName: 'AboutUs'
                     },
                     {
                         label:"Articoli",
@@ -21,6 +22,7 @@ export default {
                     },
                     {
                         label:"Contatti",
+                        routeName:'ContactUs'
                     },
                 ]
         }
